@@ -97,11 +97,11 @@ def add_to_cart(melon_id):
     # - increment the count for that melon id by 1
     # - flash a success message
     # - redirect the user to the cart page
-    cart = session.get("cart", {})
-    cart[melon_id] = cart.get(melon_id, 0) + 1
+    session["cart"] = session.get("cart", {})
+    session["cart"][melon_id] = session["cart"].get(melon_id, 0) + 1
 
     flash("Melon was successfully added to your cart")
-    print(cart)
+    print(session["cart"])
 
     return redirect('/cart')
 
